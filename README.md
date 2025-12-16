@@ -18,7 +18,7 @@ Plataforma web profesional para asesores de ventas de Quantum Motors Sucursal La
 
 ## 🌐 Demo en Vivo
 
-👉 [Ver Aplicación](https://TU-USUARIO.github.io/quantum-phygital-app/)
+👉 [Ver Aplicación](https://yeisonker384-eng/quantum-phygital-app/)
 
 ## 🎨 Tecnologías
 
