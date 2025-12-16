@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Motors | Sistema Phygital - Sucursal La Paz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --quantum-green: #00C853;
+            --quantum-dark-green: #00A844;
+            --quantum-light-green: #69F0AE;
+            --quantum-bg: #0A1612;
+            --quantum-card: #111D19;
+            --quantum-card-hover: #1A2B24;
+            --quantum-border: #1E352C;
+            --quantum-text: #E8F5E9;
+            --quantum-text-secondary: #A5D6A7;
+            --quantum-accent: #00E676;
+            --quantum-warning: #FFD54F;
+            --quantum-danger: #FF5252;
+            --quantum-info: #40C4FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--quantum-bg) 0%, #0D2118 100%);
+            color: var(--quantum-text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 200, 83, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 230, 118, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--quantum-card) 0%, var(--quantum-card-hover) 100%);
+            border: 1px solid var(--quantum-border);
+            border-radius: 20px;
+            padding: 25px 35px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px rgba(0, 200, 83, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--quantum-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(0, 200, 83, 0.5);
+        }
+
+        .branch-info {
+            border-left: 2px solid var(--quantum-green);
+            padding-left: 20px;
+        }
+
+        .branch-info h2 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--quantum-text);
+            margin-bottom: 4px;
+        }
+
+        .branch-info p {
+            font-size: 13px;
+            color: var(--quantum-text-secondary);
+            font-weight: 400;
+        }
+
+        .advisor-section {
+            text-align: right;
+        }
+
+        .advisor-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--quantum-text);
+            margin-bottom: 4px;
+        }
+
+        .advisor-id {
+            font-size: 12px;
+            color: var(--quantum-text-secondary);
+            padding: 4px 12px;
+            background: rgba(0, 200, 83, 0.1);
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Main Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+            animation: fadeIn 0.6s ease-out 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: var(--quantum-card);
+            border: 1px solid var(--quantum-border);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover {
+            background: var(--quantum-card-hover);
+            border-color: var(--quantum-green);
+            box-shadow: 0 8px 32px rgba(0, 200, 83, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--quantum-border);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--quantum-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--quantum-green);
+            border-radius: 6px;
+            color: var(--quantum-bg);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* Check-in Section */
+        .scan-area {
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.05) 0%, rgba(0, 230, 118, 0.08) 100%);
+            border: 2px dashed var(--quantum-green);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scan-area:hover {
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.1) 0%, rgba(0, 230, 118, 0.15) 100%);
+            border-color: var(--quantum-accent);
+            transform: scale(1.02);
+        }
+
+        .scan-icon {
+            font-size: 64px;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        .scan-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--quantum-green);
+            margin-bottom: 8px;
+        }
+
+        .scan-subtext {
+            font-size: 13px;
+            color: var(--quantum-text-secondary);
+        }
+
+        .manual-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-field {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--quantum-border);
+            border-radius: 10px;
+            padding: 12px 18px;
+            color: var(--quantum-text);
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--quantum-green);
+            box-shadow: 0 0 0 3px rgba(0, 200, 83, 0.1);
+        }
+
+        .input-field::placeholder {
+            color: var(--quantum-text-secondary);
+        }
+
+        /* Buttons */
+        .btn {
+            background: var(--quantum-green);
+            color: var(--quantum-bg);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background: var(--quantum-accent);
+            box-shadow: 0 6px 20px rgba(0, 200, 83, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: rgba(0, 200, 83, 0.1);
+            color: var(--quantum-green);
+            border: 1px solid var(--quantum-green);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 200, 83, 0.2);
+        }
+
+        .btn-danger {
+            background: var(--quantum-danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #FF1744;
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* Reservations List */
+        .reservation-item {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--quantum-border);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .reservation-item:hover {
+            border-color: var(--quantum-green);
+            background: rgba(0, 200, 83, 0.05);
+            transform: translateX(4px);
+        }
+
+        .reservation-item.active {
+            border-color: var(--quantum-green);
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.1) 0%, rgba(0, 230, 118, 0.05) 100%);
+            box-shadow: 0 4px 16px rgba(0, 200, 83, 0.2);
+        }
+
+        .reservation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .client-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--quantum-text);
+        }
+
+        .reservation-time {
+            font-size: 12px;
+            color: var(--quantum-green);
+            background: rgba(0, 200, 83, 0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .reservation-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 13px;
+        }
+
+        .detail-item {
+            color: var(--quantum-text-secondary);
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--quantum-green);
+        }
+
+        /* Simulator Control */
+        .simulator-status {
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.1) 0%, rgba(0, 230, 118, 0.05) 100%);
+            border: 2px solid var(--quantum-green);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .status-indicator {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: var(--quantum-card);
+            border: 4px solid var(--quantum-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            position: relative;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(0, 200, 83, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(0, 200, 83, 0.8);
+            }
+        }
+
+        .status-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--quantum-green);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-subtext {
+            font-size: 13px;
+            color: var(--quantum-text-secondary);
+        }
+
+        .scenario-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .scenario-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--quantum-border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scenario-card:hover {
+            border-color: var(--quantum-green);
+            background: rgba(0, 200, 83, 0.05);
+            transform: scale(1.05);
+        }
+
+        .scenario-card.selected {
+            border-color: var(--quantum-green);
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.15) 0%, rgba(0, 230, 118, 0.1) 100%);
+        }
+
+        .scenario-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .scenario-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--quantum-text);
+            margin-bottom: 4px;
+        }
+
+        .scenario-desc {
+            font-size: 11px;
+            color: var(--quantum-text-secondary);
+        }
+
+        /* Vehicle Models */
+        .vehicle-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .vehicle-option {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--quantum-border);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .vehicle-option:hover {
+            border-color: var(--quantum-green);
+            transform: scale(1.05);
+        }
+
+        .vehicle-option.selected {
+            border-color: var(--quantum-green);
+            background: rgba(0, 200, 83, 0.1);
+        }
+
+        .vehicle-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--quantum-text);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Telemetry */
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .telemetry-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--quantum-border);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .telemetry-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--quantum-green);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 4px;
+        }
+
+        .telemetry-label {
+            font-size: 11px;
+            color: var(--quantum-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Session Info */
+        .session-timer {
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.1) 0%, rgba(0, 230, 118, 0.05) 100%);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .timer-value {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--quantum-green);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 8px;
+        }
+
+        .timer-label {
+            font-size: 13px;
+            color: var(--quantum-text-secondary);
+        }
+
+        /* Client Profile */
+        .client-profile {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--quantum-border);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--quantum-border);
+        }
+
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--quantum-green) 0%, var(--quantum-accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--quantum-bg);
+            border: 3px solid var(--quantum-green);
+        }
+
+        .profile-info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--quantum-text);
+            margin-bottom: 4px;
+        }
+
+        .profile-info p {
+            font-size: 13px;
+            color: var(--quantum-text-secondary);
+        }
+
+        .profile-details {
+            display: grid;
+            gap: 10px;
+        }
+
+        .profile-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--quantum-border);
+        }
+
+        .profile-row:last-child {
+            border-bottom: none;
+        }
+
+        .profile-row-label {
+            color: var(--quantum-text-secondary);
+            font-weight: 600;
+        }
+
+        .profile-row-value {
+            color: var(--quantum-text);
+            font-weight: 700;
+        }
+
+        .concern-badge {
+            background: rgba(255, 213, 79, 0.2);
+            color: var(--quantum-warning);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Action Buttons Grid */
+        .actions-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        /* Stats Overview */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--quantum-border);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--quantum-green);
+            transform: translateY(-4px);
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--quantum-green);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--quantum-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-action-btn {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--quantum-border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-action-btn:hover {
+            border-color: var(--quantum-green);
+            background: rgba(0, 200, 83, 0.05);
+            transform: scale(1.05);
+        }
+
+        .quick-action-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .quick-action-text {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--quantum-text);
+        }
+
+        /* Notifications */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--quantum-card);
+            border: 2px solid var(--quantum-green);
+            border-radius: 15px;
+            padding: 20px 25px;
+            box-shadow: 0 8px 32px rgba(0, 200, 83, 0.3);
+            z-index: 1000;
+            animation: slideIn 0.4s ease-out;
+            min-width: 300px;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(400px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .notification-icon {
+            font-size: 24px;
+        }
+
+        .notification-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--quantum-green);
+        }
+
+        .notification-message {
+            font-size: 14px;
+            color: var(--quantum-text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(0, 200, 83, 0.2);
+            border-top: 4px solid var(--quantum-green);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 14px;
+            color: var(--quantum-text-secondary);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .empty-icon {
+            font-size: 64px;
+            opacity: 0.3;
+            margin-bottom: 15px;
+        }
+
+        .empty-text {
+            font-size: 15px;
+            color: var(--quantum-text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .empty-subtext {
+            font-size: 13px;
+            color: var(--quantum-text-secondary);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .main-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .branch-info {
+                border-left: none;
+                border-top: 2px solid var(--quantum-green);
+                padding-left: 0;
+                padding-top: 20px;
+            }
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo">QUANTUM</div>
+                <div class="branch-info">
+                    <h2>Sistema Phygital de Ventas</h2>
+                    <p>Sucursal La Paz - Bolivia</p>
+                </div>
+            </div>
+            <div class="advisor-section">
+                <div class="advisor-name">Asesor: María Rodríguez</div>
+                <div class="advisor-id">ID: QM-LP-2024-045</div>
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+            <!-- Column 1: Check-In & Reservations -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-icon">📱</div>
+                        CHECK-IN DE CLIENTES
+                    </div>
+                </div>
+                
+                <!-- Scan Area -->
+                <div class="scan-area" onclick="scanQR()">
+                    <div class="scan-icon">📷</div>
+                    <div class="scan-text">Escanear Boarding Pass</div>
+                    <div class="scan-subtext">Toque aquí o use el escáner QR</div>
+                </div>
+
+                <!-- Manual Input -->
+                <div class="manual-input">
+                    <input type="text" class="input-field" placeholder="Código de Reserva">
+                    <button class="btn" onclick="manualCheckIn()">Buscar</button>
+                </div>
+
+                <!-- Divider -->
+                <div style="height: 1px; background: var(--quantum-border); margin: 25px 0;"></div>
+
+                <!-- Today's Reservations -->
+                <div style="margin-bottom: 15px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                        <h3 style="font-size: 15px; font-weight: 700; color: var(--quantum-green);">Reservas de Hoy</h3>
+                        <span style="font-size: 12px; color: var(--quantum-text-secondary); background: rgba(0,200,83,0.1); padding: 4px 10px; border-radius: 20px;">8 Activas</span>
+                    </div>
+                </div>
+
+                <div style="max-height: 400px; overflow-y: auto;">
+                    <div class="reservation-item active" onclick="selectReservation(1)">
+                        <div class="reservation-header">
+                            <div class="client-name">Juan Pérez Mamani</div>
+                            <div class="reservation-time">14:30</div>
+                        </div>
+                        <div class="reservation-details">
+                            <div class="detail-item"><span class="detail-label">Modelo:</span> E4</div>
+                            <div class="detail-item"><span class="detail-label">Ruta:</span> Sopocachi</div>
+                            <div class="detail-item"><span class="detail-label">Teléfono:</span> +591 7654-3210</div>
+                            <div class="detail-item"><span class="detail-label">Estado:</span> <span style="color: var(--quantum-green);">Confirmado</span></div>
+                        </div>
+                    </div>
+
+                    <div class="reservation-item" onclick="selectReservation(2)">
+                        <div class="reservation-header">
+                            <div class="client-name">Ana García López</div>
+                            <div class="reservation-time">15:00</div>
+                        </div>
+                        <div class="reservation-details">
+                            <div class="detail-item"><span class="detail-label">Modelo:</span> Kaiyi</div>
+                            <div class="detail-item"><span class="detail-label">Ruta:</span> Urbana</div>
+                            <div class="detail-item"><span class="detail-label">Teléfono:</span> +591 7123-4567</div>
+                            <div class="detail-item"><span class="detail-label">Estado:</span> <span style="color: var(--quantum-warning);">Pendiente</span></div>
+                        </div>
+                    </div>
+
+                    <div class="reservation-item" onclick="selectReservation(3)">
+                        <div class="reservation-header">
+                            <div class="client-name">Carlos Quispe Flores</div>
+                            <div class="reservation-time">15:30</div>
+                        </div>
+                        <div class="reservation-details">
+                            <div class="detail-item"><span class="detail-label">Modelo:</span> E4</div>
+                            <div class="detail-item"><span class="detail-label">Ruta:</span> Pendientes</div>
+                            <div class="detail-item"><span class="detail-label">Teléfono:</span> +591 7890-1234</div>
+                            <div class="detail-item"><span class="detail-label">Estado:</span> <span style="color: var(--quantum-info);">En espera</span></div>
+                        </div>
+                    </div>
+
+                    <div class="reservation-item" onclick="selectReservation(4)">
+                        <div class="reservation-header">
+                            <div class="client-name">Lucía Morales Castro</div>
+                            <div class="reservation-time">16:00</div>
+                        </div>
+                        <div class="reservation-details">
+                            <div class="detail-item"><span class="detail-label">Modelo:</span> Kaiyi</div>
+                            <div class="detail-item"><span class="detail-label">Ruta:</span> Urbana</div>
+                            <div class="detail-item"><span class="detail-label">Teléfono:</span> +591 7456-7890</div>
+                            <div class="detail-item"><span class="detail-label">Estado:</span> <span style="color: var(--quantum-green);">Confirmado</span></div>
+                        </div>
+                    </div>
+
+                    <div class="reservation-item" onclick="selectReservation(5)">
+                        <div class="reservation-header">
+                            <div class="client-name">Roberto Mendoza Silva</div>
+                            <div class="reservation-time">16:30</div>
+                        </div>
+                        <div class="reservation-details">
+                            <div class="detail-item"><span class="detail-label">Modelo:</span> E4</div>
+                            <div class="detail-item"><span class="detail-label">Ruta:</span> Sopocachi</div>
+                            <div class="detail-item"><span class="detail-label">Teléfono:</span> +591 7321-6540</div>
+                            <div class="detail-item"><span class="detail-label">Estado:</span> <span style="color: var(--quantum-warning);">Pendiente</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: Simulator Control -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-icon">🎮</div>
+                        CONTROL DEL SIMULADOR
+                    </div>
+                </div>
+
+                <!-- Simulator Status -->
+                <div class="simulator-status">
+                    <div class="status-indicator">🟢</div>
+                    <div class="status-text">Disponible</div>
+                    <div class="status-subtext">Listo para iniciar experiencia virtual</div>
+                </div>
+
+                <!-- Vehicle Selection -->
+                <h4 style="font-size: 14px; font-weight: 700; color: var(--quantum-text); margin-bottom: 12px;">Seleccionar Vehículo</h4>
+                <div class="vehicle-selector">
+                    <div class="vehicle-option selected" onclick="selectVehicle('e4')">
+                        <div class="vehicle-name">E4</div>
+                    </div>
+                    <div class="vehicle-option" onclick="selectVehicle('kaiyi')">
+                        <div class="vehicle-name">KAIYI</div>
+                    </div>
+                </div>
+
+                <!-- Scenario Selection -->
+                <h4 style="font-size: 14px; font-weight: 700; color: var(--quantum-text); margin-bottom: 12px;">Escenario de Ruta</h4>
+                <div class="scenario-selector">
+                    <div class="scenario-card selected" onclick="selectScenario('sopocachi')">
+                        <div class="scenario-icon">⛰️</div>
+                        <div class="scenario-name">Ruta Sopocachi</div>
+                        <div class="scenario-desc">Pendientes extremas 25°</div>
+                    </div>
+                    <div class="scenario-card" onclick="selectScenario('urban')">
+                        <div class="scenario-icon">🏙️</div>
+                        <div class="scenario-name">Ruta Urbana</div>
+                        <div class="scenario-desc">Tráfico ciudad La Paz</div>
+                    </div>
+                </div>
+
+                <!-- Session Timer -->
+                <div class="session-timer">
+                    <div class="timer-value">00:00</div>
+                    <div class="timer-label">Tiempo de Sesión</div>
+                </div>
+
+                <!-- Telemetry -->
+                <h4 style="font-size: 14px; font-weight: 700; color: var(--quantum-text); margin-bottom: 12px;">Telemetría en Vivo</h4>
+                <div class="telemetry-grid">
+                    <div class="telemetry-card">
+                        <div class="telemetry-value">0%</div>
+                        <div class="telemetry-label">Torque Entregado</div>
+                    </div>
+                    <div class="telemetry-card">
+                        <div class="telemetry-value">0°</div>
+                        <div class="telemetry-label">Inclinación Actual</div>
+                    </div>
+                    <div class="telemetry-card">
+                        <div class="telemetry-value">0</div>
+                        <div class="telemetry-label">Velocidad (km/h)</div>
+                    </div>
+                    <div class="telemetry-card">
+                        <div class="telemetry-value">100%</div>
+                        <div class="telemetry-label">Batería Virtual</div>
+                    </div>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="actions-grid">
+                    <button class="btn btn-full" onclick="startSimulation()">🚀 INICIAR SIMULACIÓN</button>
+                    <button class="btn btn-secondary btn-full" onclick="pauseSimulation()">⏸️ Pausar Sesión</button>
+                    <button class="btn btn-danger btn-full" onclick="stopSimulation()">⏹️ Finalizar y Guardar</button>
+                </div>
+            </div>
+
+            <!-- Column 3: Client Profile & Stats -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-icon">👤</div>
+                        PERFIL DEL CLIENTE
+                    </div>
+                </div>
+
+                <!-- Client Profile -->
+                <div class="client-profile">
+                    <div class="profile-header">
+                        <div class="profile-avatar">JP</div>
+                        <div class="profile-info">
+                            <h3>Juan Pérez Mamani</h3>
+                            <p>Cliente Prioritario • ID: #QM-24-1087</p>
+                        </div>
+                    </div>
+                    <div class="profile-details">
+                        <div class="profile-row">
+                            <span class="profile-row-label">Modelo de Interés:</span>
+                            <span class="profile-row-value">Quantum E4</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="profile-row-label">Presupuesto:</span>
+                            <span class="profile-row-value">$15,000 - $18,000</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="profile-row-label">Fecha Esperada:</span>
+                            <span class="profile-row-value">Enero 2026</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="profile-row-label">Preocupación Principal:</span>
+                            <span class="concern-badge">⚠️ Subidas empinadas</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="profile-row-label">Interacción Previa:</span>
+                            <span class="profile-row-value">Primera visita</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="profile-row-label">Canal de Origen:</span>
+                            <span class="profile-row-value">Sitio Web</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Notes -->
+                <h4 style="font-size: 14px; font-weight: 700; color: var(--quantum-text); margin-bottom: 12px;">Notas del Asesor</h4>
+                <textarea class="input-field" rows="4" placeholder="Agregar observaciones sobre el cliente..." style="width: 100%; resize: vertical; margin-bottom: 20px;"></textarea>
+
+                <!-- Stats -->
+                <h4 style="font-size: 14px; font-weight: 700; color: var(--quantum-text); margin-bottom: 12px;">Estadísticas del Día</h4>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Test Drives</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Simulaciones</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Ventas</div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <h4 style="font-size: 14px; font-weight: 700; color: var(--quantum-text); margin-bottom: 12px;">Acciones Rápidas</h4>
+                <div class="quick-actions">
+                    <div class="quick-action-btn" onclick="sendWhatsApp()">
+                        <div class="quick-action-icon">💬</div>
+                        <div class="quick-action-text">Enviar WhatsApp</div>
+                    </div>
+                    <div class="quick-action-btn" onclick="scheduleMeeting()">
+                        <div class="quick-action-icon">📅</div>
+                        <div class="quick-action-text">Agendar Cita</div>
+                    </div>
+                    <div class="quick-action-btn" onclick="sendQuote()">
+                        <div class="quick-action-icon">💰</div>
+                        <div class="quick-action-text">Enviar Cotización</div>
+                    </div>
+                    <div class="quick-action-btn" onclick="viewHistory()">
+                        <div class="quick-action-icon">📊</div>
+                        <div class="quick-action-text">Ver Historial</div>
+                    </div>
+                </div>
+
+                <!-- CRM Integration -->
+                <button class="btn btn-full mt-20" onclick="updateCRM()">💾 GUARDAR EN CRM</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Timer variables
+        let timerInterval;
+        let seconds = 0;
+        let isSimulationRunning = false;
+
+        // Scan QR Function
+        function scanQR() {
+            showNotification('✅ Escáner QR Activado', 'Acerque el código QR del cliente al escáner');
+            
+            // Simulate QR scan after 2 seconds
+            setTimeout(() => {
+                showNotification('🎉 Check-In Exitoso', 'Juan Pérez Mamani - Reserva confirmada');
+            }, 2000);
+        }
+
+        // Manual Check-In
+        function manualCheckIn() {
+            const input = document.querySelector('.manual-input input');
+            if (input.value.trim() !== '') {
+                showNotification('✅ Cliente Encontrado', 'Cargando perfil del cliente...');
+                input.value = '';
+            } else {
+                showNotification('⚠️ Campo Vacío', 'Por favor ingrese un código de reserva');
+            }
+        }
+
+        // Select Reservation
+        function selectReservation(id) {
+            const items = document.querySelectorAll('.reservation-item');
+            items.forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            showNotification('👤 Cliente Seleccionado', 'Perfil cargado correctamente');
+        }
+
+        // Select Vehicle
+        function selectVehicle(vehicle) {
+            const options = document.querySelectorAll('.vehicle-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            showNotification('🚗 Vehículo Seleccionado', vehicle === 'e4' ? 'Quantum E4' : 'Kaiyi');
+        }
+
+        // Select Scenario
+        function selectScenario(scenario) {
+            const cards = document.querySelectorAll('.scenario-card');
+            cards.forEach(card => card.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            showNotification('🗺️ Escenario Seleccionado', scenario === 'sopocachi' ? 'Ruta Sopocachi - Pendientes 25°' : 'Ruta Urbana');
+        }
+
+        // Start Simulation
+        function startSimulation() {
+            if (!isSimulationRunning) {
+                isSimulationRunning = true;
+                document.querySelector('.status-text').textContent = 'En Sesión';
+                document.querySelector('.status-subtext').textContent = 'Experiencia virtual activa';
+                document.querySelector('.status-indicator').innerHTML = '🎮';
+                
+                startTimer();
+                startTelemetrySimulation();
+                
+                showNotification('🚀 Simulación Iniciada', 'Cliente experimentando la ruta virtual');
+            }
+        }
+
+        // Pause Simulation
+        function pauseSimulation() {
+            if (isSimulationRunning) {
+                isSimulationRunning = false;
+                clearInterval(timerInterval);
+                document.querySelector('.status-text').textContent = 'Pausado';
+                document.querySelector('.status-indicator').innerHTML = '⏸️';
+                showNotification('⏸️ Sesión Pausada', 'Puede reanudar cuando esté listo');
+            }
+        }
+
+        // Stop Simulation
+        function stopSimulation() {
+            isSimulationRunning = false;
+            clearInterval(timerInterval);
+            seconds = 0;
+            updateTimerDisplay();
+            
+            document.querySelector('.status-text').textContent = 'Disponible';
+            document.querySelector('.status-subtext').textContent = 'Listo para iniciar experiencia virtual';
+            document.querySelector('.status-indicator').innerHTML = '🟢';
+            
+            resetTelemetry();
+            
+            showNotification('✅ Sesión Finalizada', 'Datos guardados en el perfil del cliente');
+        }
+
+        // Timer Functions
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                seconds++;
+                updateTimerDisplay();
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            const display = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            document.querySelector('.timer-value').textContent = display;
+        }
+
+        // Telemetry Simulation
+        function startTelemetrySimulation() {
+            const telemetryInterval = setInterval(() => {
+                if (!isSimulationRunning) {
+                    clearInterval(telemetryInterval);
+                    return;
+                }
+                
+                // Random telemetry values
+                const torque = Math.floor(Math.random() * 100);
+                const incline = Math.floor(Math.random() * 25);
+                const speed = Math.floor(Math.random() * 80);
+                const battery = 100 - Math.floor(seconds / 10);
+                
+                document.querySelectorAll('.telemetry-value')[0].textContent = `${torque}%`;
+                document.querySelectorAll('.telemetry-value')[1].textContent = `${incline}°`;
+                document.querySelectorAll('.telemetry-value')[2].textContent = speed;
+                document.querySelectorAll('.telemetry-value')[3].textContent = `${Math.max(battery, 85)}%`;
+            }, 500);
+        }
+
+        function resetTelemetry() {
+            document.querySelectorAll('.telemetry-value')[0].textContent = '0%';
+            document.querySelectorAll('.telemetry-value')[1].textContent = '0°';
+            document.querySelectorAll('.telemetry-value')[2].textContent = '0';
+            document.querySelectorAll('.telemetry-value')[3].textContent = '100%';
+        }
+
+        // Quick Actions
+        function sendWhatsApp() {
+            showNotification('💬 WhatsApp', 'Abriendo conversación con el cliente...');
+        }
+
+        function scheduleMeeting() {
+            showNotification('📅 Agendar Cita', 'Calendario de citas abierto');
+        }
+
+        function sendQuote() {
+            showNotification('💰 Cotización', 'Generando documento de cotización...');
+        }
+
+        function viewHistory() {
+            showNotification('📊 Historial', 'Cargando interacciones previas del cliente');
+        }
+
+        function updateCRM() {
+            showNotification('💾 CRM Actualizado', 'Información guardada exitosamente en el sistema');
+        }
+
+        // Notification System
+        function showNotification(title, message) {
+            // Remove existing notification
+            const existing = document.querySelector('.notification');
+            if (existing) {
+                existing.remove();
+            }
+
+            // Create new notification
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `
+                <div class="notification-header">
+                    <div class="notification-icon">✨</div>
+                    <div class="notification-title">${title}</div>
+                </div>
+                <div class="notification-message">${message}</div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideIn 0.4s ease-out reverse';
+                setTimeout(() => notification.remove(), 400);
+            }, 4000);
+        }
+
+        // Initial greeting
+        setTimeout(() => {
+            showNotification('🌟 Bienvenida', 'Sistema Phygital Quantum Motors iniciado correctamente');
+        }, 500);
+    </script>
+</body>
+</html>
